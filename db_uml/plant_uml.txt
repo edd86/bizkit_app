@@ -1,0 +1,177 @@
+@startuml
+
+entity Users {
+  +id: integer [PK]
+  googleId: text
+  email: text
+  name: text
+  photoUrl: text
+  plan: text
+  isActive: boolean
+  createdAt: datetime
+}
+
+entity Roles {
+  +id: integer [PK]
+  name: text
+  description: text
+}
+
+entity UserRoles {
+  +id: integer [PK]
+  userId: integer [FK -> Users.id]
+  roleId: integer [FK -> Roles.id]
+}
+
+entity Permissions {
+  +id: integer [PK]
+  name: text
+  description: text
+}
+
+entity RolePermissions {
+  +id: integer [PK]
+  roleId: integer [FK -> Roles.id]
+  permissionId: integer [FK -> Permissions.id]
+}
+
+entity Employees {
+  +id: integer [PK]
+  userId: integer [FK -> Users.id]
+  name: text
+  email: text
+  phone: text
+}
+
+entity Branches {
+  +id: integer [PK]
+  userId: integer [FK -> Users.id]
+  name: text
+  address: text
+}
+
+entity Products {
+  +id: integer [PK]
+  userId: integer [FK -> Users.id]
+  name: text
+  description: text
+  price: real
+  sku: text
+  stock: integer
+}
+
+entity Inventory {
+  +id: integer [PK]
+  productId: integer [FK -> Products.id]
+  branchId: integer [FK -> Branches.id]
+  stock: integer
+  updatedAt: datetime
+}
+
+entity PaymentMethods {
+  +id: integer [PK]
+  name: text
+  description: text
+}
+
+entity Sales {
+  +id: integer [PK]
+  userId: integer [FK -> Users.id]
+  employeeId: integer [FK -> Employees.id]
+  branchId: integer [FK -> Branches.id]
+  paymentMethodId: integer [FK -> PaymentMethods.id]
+  total: real
+  paymentToken: text
+  createdAt: datetime
+}
+
+entity SaleItems {
+  +id: integer [PK]
+  saleId: integer [FK -> Sales.id]
+  productId: integer [FK -> Products.id]
+  quantity: integer
+  price: real
+}
+
+entity Purchases {
+  +id: integer [PK]
+  userId: integer [FK -> Users.id]
+  total: real
+  createdAt: datetime
+}
+
+entity PurchaseItems {
+  +id: integer [PK]
+  purchaseId: integer [FK -> Purchases.id]
+  productId: integer [FK -> Products.id]
+  quantity: integer
+  price: real
+}
+
+entity Subscriptions {
+  +id: integer [PK]
+  userId: integer [FK -> Users.id]
+  currentPeriodStart: datetime
+  currentPeriodEnd: datetime
+  isActive: boolean
+  totalTransactions: integer
+}
+
+entity SubscriptionPayments {
+  +id: integer [PK]
+  userId: integer [FK -> Users.id]
+  amount: real
+  paymentDate: datetime
+  reference: text
+}
+
+entity ActivityLogs {
+  +id: integer [PK]
+  userId: integer [FK -> Users.id]
+  action: text
+  tableAffected: text
+  recordId: integer
+  timestamp: datetime
+  ipAddress: text
+}
+
+entity Plans {
+  +id: integer [PK]
+  name: text
+  price: real
+  transactionLimit: integer
+  description: text
+  isActive: boolean
+}
+
+' Relaciones
+Users ||--o{ Employees
+Users ||--o{ Branches
+Users ||--o{ Products
+Users ||--o{ Sales
+Users ||--o{ Purchases
+Users ||--o{ Subscriptions
+Users ||--o{ SubscriptionPayments
+Users ||--o{ ActivityLogs
+Users ||--o{ UserRoles
+Users }o--|| Plans : planId
+Subscriptions }o--|| Plans : planId
+
+Roles ||--o{ UserRoles
+Roles ||--o{ RolePermissions
+Permissions ||--o{ RolePermissions
+
+Employees ||--o{ Sales
+Branches ||--o{ Inventory
+Branches ||--o{ Sales
+
+Products ||--o{ Inventory
+Products ||--o{ SaleItems
+Products ||--o{ PurchaseItems
+
+Sales ||--o{ SaleItems
+Sales }o--|| PaymentMethods
+
+Purchases ||--o{ PurchaseItems
+
+@enduml
