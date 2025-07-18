@@ -6,9 +6,10 @@ entity Users {
   email: text
   name: text
   photoUrl: text
-  plan: text
+  planId: integer [FK -> Plans.id]
   isActive: boolean
   createdAt: datetime
+  updatedAt: datetime
 }
 
 entity Roles {
@@ -41,6 +42,10 @@ entity Employees {
   name: text
   email: text
   phone: text
+  createdAt: datetime
+  updatedAt: datetime
+  syncStatus: text
+  remoteId: integer
 }
 
 entity Branches {
@@ -48,6 +53,10 @@ entity Branches {
   userId: integer [FK -> Users.id]
   name: text
   address: text
+  createdAt: datetime
+  updatedAt: datetime
+  syncStatus: text
+  remoteId: integer
 }
 
 entity Products {
@@ -56,8 +65,11 @@ entity Products {
   name: text
   description: text
   price: real
-  sku: text
-  stock: integer
+  sku: text [unique]
+  createdAt: datetime
+  updatedAt: datetime
+  syncStatus: text
+  remoteId: integer
 }
 
 entity Inventory {
@@ -83,6 +95,9 @@ entity Sales {
   total: real
   paymentToken: text
   createdAt: datetime
+  updatedAt: datetime
+  syncStatus: text
+  remoteId: integer
 }
 
 entity SaleItems {
@@ -98,6 +113,9 @@ entity Purchases {
   userId: integer [FK -> Users.id]
   total: real
   createdAt: datetime
+  updatedAt: datetime
+  syncStatus: text
+  remoteId: integer
 }
 
 entity PurchaseItems {
@@ -111,15 +129,19 @@ entity PurchaseItems {
 entity Subscriptions {
   +id: integer [PK]
   userId: integer [FK -> Users.id]
+  planId: integer [FK -> Plans.id]
   currentPeriodStart: datetime
   currentPeriodEnd: datetime
   isActive: boolean
   totalTransactions: integer
+  createdAt: datetime
+  updatedAt: datetime
 }
 
 entity SubscriptionPayments {
   +id: integer [PK]
   userId: integer [FK -> Users.id]
+  subscriptionId: integer [FK -> Subscriptions.id]
   amount: real
   paymentDate: datetime
   reference: text
@@ -133,6 +155,8 @@ entity ActivityLogs {
   recordId: integer
   timestamp: datetime
   ipAddress: text
+  previousData: text
+  newData: text
 }
 
 entity Plans {
@@ -155,7 +179,6 @@ Users ||--o{ SubscriptionPayments
 Users ||--o{ ActivityLogs
 Users ||--o{ UserRoles
 Users }o--|| Plans : planId
-Subscriptions }o--|| Plans : planId
 
 Roles ||--o{ UserRoles
 Roles ||--o{ RolePermissions
@@ -173,5 +196,8 @@ Sales ||--o{ SaleItems
 Sales }o--|| PaymentMethods
 
 Purchases ||--o{ PurchaseItems
+
+Subscriptions }o--|| Plans : planId
+SubscriptionPayments }o--|| Subscriptions : subscriptionId
 
 @enduml

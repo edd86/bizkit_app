@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bizkit_app/data/table_schemas.dart';
+import 'package:bizkit_app/data/local/table_schemas.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
