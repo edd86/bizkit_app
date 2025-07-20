@@ -1,5 +1,5 @@
 import 'package:bizkit_app/presentation/pages/employer/employer_page.dart';
-import 'package:bizkit_app/presentation/pages/home/home_page.dart';
+import 'package:bizkit_app/features/home_dashboard/presentarion/dashboard_page.dart';
 import 'package:bizkit_app/presentation/pages/inventory/inventory_page.dart';
 import 'package:bizkit_app/presentation/pages/sales/sales_page.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +47,7 @@ class _CustomNavigationState extends State<CustomNavigation> {
         ],
       ),
       body: <Widget>[
-        HomePage(),
+        DashboardPage(),
         SalesPage(),
         InventoryPage(),
         EmployerPage(),
