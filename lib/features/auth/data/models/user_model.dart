@@ -6,6 +6,7 @@ class UserModel {
   final String plan;
   final bool isActive;
   final DateTime createdAt;
+  final String fingerPrint;
   final String googleId;
 
   UserModel({
@@ -16,6 +17,7 @@ class UserModel {
     required this.plan,
     required this.isActive,
     required this.createdAt,
+    required this.fingerPrint,
     required this.googleId,
   });
 
@@ -28,6 +30,7 @@ class UserModel {
       plan: json['plan'],
       isActive: json['isActive'],
       createdAt: DateTime.parse(json['createdAt']),
+      fingerPrint: json['fingerPrint'],
       googleId: json['googleId'],
     );
   }
@@ -41,6 +44,7 @@ class UserModel {
       'plan': plan,
       'isActive': isActive,
       'createdAt': createdAt.toIso8601String(),
+      'fingerPrint': fingerPrint,
       'googleId': googleId,
     };
   }
@@ -53,6 +57,7 @@ class UserModel {
     String? plan,
     bool? isActive,
     DateTime? createdAt,
+    String? fingerPrint,
     String? googleId,
   }) {
     return UserModel(
@@ -63,6 +68,7 @@ class UserModel {
       plan: plan ?? this.plan,
       isActive: isActive ?? this.isActive,
       createdAt: createdAt ?? this.createdAt,
+      fingerPrint: fingerPrint ?? this.fingerPrint,
       googleId: googleId ?? this.googleId,
     );
   }
