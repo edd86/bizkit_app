@@ -10,6 +10,7 @@ CREATE TABLE Users (
   isActive INTEGER NOT NULL DEFAULT 1,
   createdAt TEXT NOT NULL,
   updatedAt TEXT,
+  fingerPrint TEXT,
   FOREIGN KEY (planId) REFERENCES Plans(id)
 )''',
 
