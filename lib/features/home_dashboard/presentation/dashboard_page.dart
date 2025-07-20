@@ -1,7 +1,7 @@
 import 'package:bizkit_app/core/constants/app_theme.dart';
 import 'package:bizkit_app/data/data_json.dart';
-import 'package:bizkit_app/features/home_dashboard/presentarion/widgets/widget_sell_report.dart';
-import 'package:bizkit_app/features/home_dashboard/presentarion/widgets/widget_inventory_report.dart';
+import 'package:bizkit_app/features/home_dashboard/presentation/widgets/widget_sell_report.dart';
+import 'package:bizkit_app/features/home_dashboard/presentation/widgets/widget_inventory_report.dart';
 import 'package:bizkit_app/presentation/pages/widgets/custom_listtile.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
