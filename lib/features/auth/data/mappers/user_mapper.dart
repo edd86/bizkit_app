@@ -1,8 +1,8 @@
 import 'package:bizkit_app/features/auth/data/models/user_model.dart';
-import 'package:bizkit_app/features/auth/domain/entities/user_entity.dart';
+import 'package:bizkit_app/features/auth/domain/entities/user.dart';
 
 class UserMapper {
-  static UserModel toModel(UserEntity entity) {
+  static UserModel toModel(User entity) {
     return UserModel(
       id: entity.id,
       email: entity.email,
@@ -16,8 +16,8 @@ class UserMapper {
     );
   }
 
-  static UserEntity toEntity(UserModel model) {
-    return UserEntity(
+  static User toEntity(UserModel model) {
+    return User(
       id: model.id,
       email: model.email,
       name: model.name,

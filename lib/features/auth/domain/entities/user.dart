@@ -1,4 +1,4 @@
-class UserEntity {
+class User {
   final int? id;
   final String email;
   final String name;
@@ -9,7 +9,7 @@ class UserEntity {
   final String fingerPrint;
   final String googleId;
 
-  UserEntity({
+  User({
     this.id,
     required this.email,
     required this.name,
