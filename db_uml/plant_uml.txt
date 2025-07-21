@@ -67,6 +67,7 @@ entity Products {
   description: text
   price: real
   sku: text [unique]
+  expirationDate: datetime
   createdAt: datetime
   updatedAt: datetime
   syncStatus: text

@@ -49,12 +49,13 @@ CREATE TABLE Products (
   description TEXT,
   price REAL NOT NULL,
   sku TEXT UNIQUE NOT NULL,
+  expirationDate TEXT,
   createdAt TEXT NOT NULL,
   updatedAt TEXT,
   syncStatus TEXT,
   remoteId INTEGER,
   FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE
-)''',
+);''',
 
   '''-- Inventario por sucursal
 CREATE TABLE Inventory (
