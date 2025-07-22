@@ -52,3 +52,24 @@ const List<Map<String, String>> dataEmployerJson = [
     "address": "Calle Sucre 200",
   },
 ];
+
+const List<Map<String, dynamic>> plans = [
+  {
+    "id": 1,
+    "name": "Plan Begginer",
+    "price": "free",
+    "desc": "Plan de inicio gratuito con funcionalidades básicas",
+  },
+  {
+    "id": 2,
+    "name": "Plan Standard",
+    "price": "\$19.99",
+    "desc": "Plan con funcionalidades avanzadas y soporte prioritario",
+  },
+  {
+    "id": 3,
+    "name": "Plan Premium",
+    "price": "\$49.99",
+    "desc": "Plan con todas las funcionalidades y soporte prioritario",
+  },
+];
