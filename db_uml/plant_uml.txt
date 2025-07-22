@@ -5,6 +5,7 @@ entity Users {
   googleId: text
   email: text
   name: text
+  phone: text
   photoUrl: text
   planId: integer [FK -> Plans.id]
   isActive: boolean

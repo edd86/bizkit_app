@@ -5,6 +5,7 @@ CREATE TABLE Users (
   googleId TEXT,
   email TEXT UNIQUE,
   name TEXT,
+  phone TEXT,
   photoUrl TEXT,
   planId INTEGER,
   isActive INTEGER NOT NULL DEFAULT 1,
