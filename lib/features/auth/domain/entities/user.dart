@@ -2,7 +2,8 @@ class User {
   final int? id;
   final String email;
   final String name;
-  final String photoUrl;
+  final String phone;
+  final String? photoUrl;
   final String plan;
   final bool isActive;
   final DateTime createdAt;
@@ -13,7 +14,8 @@ class User {
     this.id,
     required this.email,
     required this.name,
-    required this.photoUrl,
+    required this.phone,
+    this.photoUrl,
     required this.plan,
     required this.isActive,
     required this.createdAt,

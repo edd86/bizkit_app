@@ -2,7 +2,8 @@ class UserModel {
   final int? id;
   final String email;
   final String name;
-  final String photoUrl;
+  final String phone;
+  final String? photoUrl;
   final String plan;
   final bool isActive;
   final DateTime createdAt;
@@ -13,7 +14,8 @@ class UserModel {
     this.id,
     required this.email,
     required this.name,
-    required this.photoUrl,
+    required this.phone,
+    this.photoUrl,
     required this.plan,
     required this.isActive,
     required this.createdAt,
@@ -26,7 +28,8 @@ class UserModel {
       id: json['id'],
       email: json['email'],
       name: json['name'],
-      photoUrl: json['photoUrl'],
+      phone: json['phone'],
+      photoUrl: json['photoUrl'] ?? '',
       plan: json['plan'],
       isActive: json['isActive'],
       createdAt: DateTime.parse(json['createdAt']),
@@ -40,7 +43,8 @@ class UserModel {
       'id': id,
       'email': email,
       'name': name,
-      'photoUrl': photoUrl,
+      'phone': phone,
+      'photoUrl': photoUrl ?? '',
       'plan': plan,
       'isActive': isActive,
       'createdAt': createdAt.toIso8601String(),
@@ -53,6 +57,7 @@ class UserModel {
     int? id,
     String? email,
     String? name,
+    String? phone,
     String? photoUrl,
     String? plan,
     bool? isActive,
@@ -64,6 +69,7 @@ class UserModel {
       id: id ?? this.id,
       email: email ?? this.email,
       name: name ?? this.name,
+      phone: phone ?? this.phone,
       photoUrl: photoUrl ?? this.photoUrl,
       plan: plan ?? this.plan,
       isActive: isActive ?? this.isActive,
