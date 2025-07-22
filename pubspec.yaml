@@ -1,19 +1,23 @@
 name: bizkit_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
   sdk: ^3.8.1
 
 dependencies:
+  email_validator: ^3.0.0
   flutter:
     sdk: flutter
+  flutter_svg: ^2.2.0
   google_fonts: ^6.2.1
+  local_auth: ^2.3.0
   path: ^1.9.1
   provider: ^6.1.5
   sizer: ^3.0.5
   sqflite: ^2.4.2
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_lints: ^5.0.0
